@@ -1,3 +1,12 @@
+# Caleb's Fork of tbcc-moonkin-dps-simulator
+This is a fork of Ceridwyn's TBC Classic Moonkin sim. I am working on improving this simulation. Here's is my current todo list:
+- Rework the interface into a comfortable Tkinter GUI environment
+- Switch between Wrath & Starfire sims with a simple checkbox button
+- Implement mana management into the dps calculations
+- Calculate stat-weights as part of the simulation results
+
+For archival purposes, I will leave the original readme intact below:
+
 # tbcc-moonkin-dps-simulator
 This repository hosts (mainly) Jupyter notebooks which simulate Moonkin DPS for WoW - The Burning Crusade Classic
 
