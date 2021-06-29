@@ -6,7 +6,7 @@ class App(Tk):
 		super().__init__()
 		self.title('Moonkin DPS Simulator')
 		
-		# Init self.content window
+		# Init the main content frame 
 		self.content = ttk.Frame(self, padding="3 3 12 12")
 		self.content.grid(column=0, row=0, sticky=(N, W, E, S))
 
@@ -17,6 +17,7 @@ class App(Tk):
 		self.spell_crit	 = StringVar()
 		self.spell_haste = StringVar()
 
+		# Build stat input widgets & labels
 		self.create_widgets()
 
 	def create_widgets(self):
