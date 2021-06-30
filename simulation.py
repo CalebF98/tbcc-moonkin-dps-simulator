@@ -77,16 +77,17 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
     # Hit chance
     # 12.6 Spell Hit Rating -> 1%
     hit_chance = min(99, 83 + (hit_score/12.6) + balance_of_power )
-    logging.debug("Hit chance is : " + str(hit_chance))
+    logging.debug(f'Hit chance is : {hit_chance}')
 
     # Crit chance
     # At level 70, 22.1 Spell Critical Strike Rating -> 1%
     # Druids receive 1% Spell Critical Strike chance for every 79.4 points of intellectlect.
     MF_crit_percent = crit_score/22.1 + intellect/79.4 + improved_mf + moonkin_form + focused_starlight 
-    logging.debug("Moonfire crit chance is : " + str(MF_crit_percent))
     SF_crit_percent =  crit_score/22.1 + intellect/79.4 +  + moonkin_form + focused_starlight 
-    logging.debug("Starfire crit chance is : " + str(SF_crit_percent))
-    logging.debug("Spellpower is  : " + str(spellpower))
+
+    logging.debug(f'Moonfire crit chance is : {MF_crit_percent}')
+    logging.debug(f'Starfire crit chance is : {SF_crit_percent}')
+    logging.debug(f'Spellpower is  : {spellpower}')
     
     # Crit coeff
     if csd_equiped:
@@ -131,7 +132,7 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
            
             # if FF not up, cast FF
             if not is_ff_up:
-                logging.debug("Casting Faerie Fire !")
+                logging.debug('Casting Faerie Fire !')
                 is_crit = False # can't crit on FF
                 damage = 0 # and no damage applied
                 if(numpy.random.randint(1, high = 101, size = 1) <= hit_chance):
@@ -142,12 +143,12 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
                     spellstrike_proc = (numpy.random.randint(1, high = 101, size = 1) <= 10)
                 else:
                     is_hit = False
-                    logging.debug("Faerie Fire -> Resist !")
+                    logging.debug('Faerie Fire -> Resist !')
                 loop_duration = 1 #GCD
             # if Moonfire not up, cast Moonfire
             else:
                 if not is_mf_up:
-                    logging.debug("Casting Moonfire !")
+                    logging.debug('Casting Moonfire !')
                     loop_duration = 1 #GCD because we cast a spell
                     # Is it a hit ?
                     if(numpy.random.randint(1, high = 101, size = 1) <= hit_chance):
@@ -169,10 +170,10 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
                         mf_uptime = 12
                     else:
                         is_hit = False
-                        logging.debug("Moonfire -> Resist ! ")
+                        logging.debug('Moonfire -> Resist ! ')
                 else:
                     # Cast Starfire
-                    logging.debug("Casting Starfire !")
+                    logging.debug('Casting Starfire !')
                     # Is it a hit ?
                     if(numpy.random.randint(1, high = 101, size = 1) <= hit_chance):
                         is_hit = True
@@ -180,17 +181,17 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
                         is_crit = (numpy.random.randint(1, high = 101, size = 1) <= SF_crit_percent)
                         # Is it a partial ?
                         if(numpy.random.randint(1, high = 101, size = 1) > hit_chance):
-                            logging.debug("Partial hit !")
+                            logging.debug('Partial hit !')
                             damage = (SF_average_damage + (SF_coeff * fight_spell_power * wrath_of_cenarius * partial_coeff )) * moonfury
                             # logging.info("Damage done : " + str(damage))
                         else:
                             damage = (SF_average_damage + (SF_coeff * fight_spell_power * wrath_of_cenarius )) * moonfury
-                            logging.debug("Damage done : " + str(damage))
+                            logging.debug(f'Damage done : {damage}')
                         if is_crit:
                             damage = damage * crit_coeff
                     else:
                         is_hit = False
-                        logging.debug("Starfire -> Resist ! ")
+                        logging.debug('Starfire -> Resist ! ')
                     if is_ng:
                         loop_duration = sf_cast_time_ng
                     else:
@@ -223,11 +224,11 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
                     if numpy.random.randint(1, high = 11, size = 1) == 10:
                         spellstrike_proc = True
                         spellstrike_uptime = 10
-                        logging.debug("Spellstrike proc !!!")
+                        logging.debug('Spellstrike proc !!!')
 
                 # Print output
-                logging.debug("Loop Duration : " + str(loop_duration))
-                logging.debug("Loop Damage : " + str(damage))
+                logging.debug(f'Loop Duration: {loop_duration}')
+                logging.debug(f'Loop Damage: {damage}')
 
         dps = total_damage_done / fight_time # We use fight_time here in case SF lands after the fight_length mark
         logging.debug(f'Damage done for fight #{n}: {total_damage_done:.2f} ({dps:.2f})')
