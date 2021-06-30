@@ -23,10 +23,10 @@ class App(Tk):
 		self.create_widgets()
 
 	def create_widgets(self):
-		# Create a row w/ widgets for each stat entry field
-		for idx, (stat, tkVar) in enumerate(self.stats.items()):
+		# Create a row w/ an entry and label for each player stat
+		for idx, (stat_name, tkVar) in enumerate(self.stats.items()):
 			entry = ttk.Entry(self.content, width=7, textvariable=tkVar)
-			label = ttk.Label(self.content, text=stat)
+			label = ttk.Label(self.content, text=stat_name)
 
 			entry.grid(column=0, row=idx)
 			label.grid(column=1, row=idx)
