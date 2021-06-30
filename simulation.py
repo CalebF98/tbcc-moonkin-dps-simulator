@@ -107,7 +107,7 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
     n = 0
     while n < loop_size:
         n = n +1
-        logging.debug(f'Simulating fight #{n}')
+        logging.info(f'Simulating fight #{n}...')
         # Initialization
         total_damage_done = 0
         damage = 0
@@ -230,7 +230,7 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
                 logging.debug("Loop Damage : " + str(damage))
 
         dps = total_damage_done / fight_time # We use fight_time here in case SF lands after the fight_length mark
-        logging.info(f'Damage done for fight #{n}: {total_damage_done:.2f} ({dps:.2f})')
+        logging.debug(f'Damage done for fight #{n}: {total_damage_done:.2f} ({dps:.2f})')
         average_dps = average_dps + (total_damage_done/fight_time)
 
     average_dps = average_dps / loop_size # We have an sum of dps for every fight, now to divide by # of fights
@@ -240,4 +240,5 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
 
 
 if __name__ == '__main__':
-	compute_avg_dps(1000, 100, 150, 84, 900, 0, True, True, True)
+    result = compute_avg_dps(1000, 100, 150, 84, 900, 0, True, True, True)
+    print(result)
