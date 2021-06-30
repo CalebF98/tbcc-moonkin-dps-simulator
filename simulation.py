@@ -24,7 +24,7 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
     fight_length = 90 # in seconds
 
     # Sets bonuses
-    spellfire = is_spellfire # SP bonus = +7% of total intellectlect
+    spellfire = is_spellfire # SP bonus = +7% of total intellect
     spellstrike = is_spellstrike # 5% chance to have +92sp for 10s - No ICD
     windhawk = False # 8MP/5 KEK
 
@@ -41,7 +41,7 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
     # Translating stats to %
     # At level 70, 22.1 Spell Critical Strike Rating increases your chance to land a Critical Strike with a Spell by 1%
     # At level 70, 12.6 Spell Hit Rating increases your chance to Hit with Spells by 1%. Hit cap is 202 FLAT (not including talents & buffs).
-    # Druids receive 1% Spell Critical Strike chance for every 79.4 points of intellectlect.
+    # Druids receive 1% Spell Critical Strike chance for every 79.4 points of intellect.
 
     # Moonfire base damage : 305 to 357 Arcane damage and then an additional 600 Arcane damage over 12 sec.
     MF_coeff = 0.15
@@ -81,7 +81,7 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
 
     # Crit chance
     # At level 70, 22.1 Spell Critical Strike Rating -> 1%
-    # Druids receive 1% Spell Critical Strike chance for every 79.4 points of intellectlect.
+    # Druids receive 1% Spell Critical Strike chance for every 79.4 points of intellect.
     MF_crit_percent = crit_score/22.1 + intellect/79.4 + improved_mf + moonkin_form + focused_starlight 
     SF_crit_percent =  crit_score/22.1 + intellect/79.4 +  + moonkin_form + focused_starlight 
 
