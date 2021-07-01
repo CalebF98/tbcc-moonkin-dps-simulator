@@ -1,9 +1,15 @@
+# Work In Progress
 # Caleb's Fork of tbcc-moonkin-dps-simulator
 This is a fork of Ceridwyn's TBC Classic Moonkin sim. I am working on improving this simulation. Here's is my current todo list:
 - Rework the interface into a comfortable ~~Tkinter~~ webpage GUI environment, _powered by a Flask service_
 - Switch between Wrath & Starfire sims with a simple checkbox button
 - Implement mana management into the dps calculations
 - Calculate stat-weights as part of the simulation results
+
+# Installation and Usage:
+To use, clone the git repository to your local environment. Setup a virtual env with `py -m venv ./venv && source venv/bin/activate`Then, run `pip install -r requirements.txt` to install dependencies. Start the web server with `flask run` and navigate to localhost:5000 (port 5000 by default) in the web browser of your choice.
+
+When the code is stable, I will host my own webpage serving this simulation. However, I still need to finish input validation and connect the form to the sim before it is ready.
 
 For archival purposes, I will leave the original readme intact below:
 
