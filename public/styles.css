@@ -1,0 +1,19 @@
+body {
+	display: flex;
+}
+
+form {
+	background-color:  #27c473;
+	border-radius: 14%;
+	color: black;
+	padding: 2em;
+	margin: 2em auto 0 4em;
+	display: grid;
+	grid-template-columns: 4em 10em;
+	gap: 0.5em;
+}
+
+
+input[type="submit"] {
+	grid-column: span 2;
+}

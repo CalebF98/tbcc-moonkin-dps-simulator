@@ -3,10 +3,10 @@
 	<head>
 		<meta author="Sepulchre" http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>The Burning Crusade Classic - Moonkin DPS Simulator</title>
-		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="stylesheet" type="text/css" href="public/styles.css">
 	</head>
 	<body>
-		<form>
+		<form method="POST" action="/">
 			<input type="text" id="int_in" name="intellect" class="statInput">
 			<label for="int_in">Intellect</label>
 
@@ -22,7 +22,7 @@
 			<input type="text" id="haste_in" name="haste_rating" class="statInput">
 			<label for="haste_in">Spell Haste Rating</label>
 
-			<input type="submit">
+			<input type="submit" value="Run Simulation">
 		</form>
 	</body>
 </html>
