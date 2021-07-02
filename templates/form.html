@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta author="Sepulchre" http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>The Burning Crusade Classic - Moonkin DPS Simulator</title>
+		<link rel="stylesheet" type="text/css" href="static/styles.css">
+	</head>
+	<body>
+		<form method="POST" action="/">
+			{% for field in form %}
+				{{ field() }} {{ field.label }}
+			{% endfor %}
+			<input type="submit" value="Run Sim">
+		</form>
+		{% if results %}
+			<h3>Results:</h3>
+			{{ results }}
+		{% endif %}
+	</body>
+</html>
