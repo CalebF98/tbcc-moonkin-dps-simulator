@@ -9,4 +9,4 @@ class SimParamsForm(FlaskForm):
 	hit        = IntegerField('Spell Hit Rating',   [NumberRange(0,202)])
 	crit       = IntegerField('Spell Crit Rating',  [NumberRange(0,500)])
 	haste      = IntegerField('Spell Haste Rating', [NumberRange(0,1000)])
-	num_fights = IntegerField('Number of fights to simulate', [NumberRange(1,2500)])
+	num_fights = IntegerField('# of fights to simulate', [NumberRange(1,2500)])

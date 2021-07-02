@@ -7,7 +7,8 @@
 	</head>
 	<body>
 		<form method="POST" action="/">
-			{% for field in form %}
+			{{ form.hidden_tag() }}
+			{% for field in form if field.widget.input_type != 'hidden' %}
 				{{ field() }} {{ field.label }}
 			{% endfor %}
 			<input type="submit" value="Run Sim">
