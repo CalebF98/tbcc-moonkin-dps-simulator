@@ -9,9 +9,10 @@ logging.basicConfig(
 	format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, haste, is_csd, is_spellstrike, is_spellfire):
-    msg = f'Stats provided to sim:\n\tIntellect: {intellect}\n\tSpell Crit: {crit_score}\n\tSpell Hit: {hit_score}\n\tSpellpower: {spellpower}\n\tHaste: {haste}\n\tChaotic Skyfire Diamond: {is_csd}\n\tSpellstrike Set: {is_spellstrike}\n\tSpellfire Set: {is_spellfire}'
+def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, haste_score, is_csd, is_spellstrike, is_spellfire):
+    msg = f'Stats provided to sim:\n\tIntellect: {intellect}\n\tSpell Crit: {crit_score}\n\tSpell Hit: {hit_score}\n\tSpellpower: {spellpower}\n\tHaste: {haste_score}\n\tChaotic Skyfire Diamond: {is_csd}\n\tSpellstrike Set: {is_spellstrike}\n\tSpellfire Set: {is_spellfire}'
     logging.info(msg)
+
     balance_of_power = 4 # +4% Hit
     focused_starlight = 4 # +4% crit for SF and Wrath
     moonkin_form = 5 # +5% Crit
@@ -62,7 +63,7 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
     # 15.77 Spell Haste Rating increases casting speed by 1%
     # % Spell Haste at level 70 = (Haste Rating / 15.77)
     # New Casting Time = Base Casting Time / (1 + (% Spell Haste / 100))
-    spell_haste = haste / 15.77
+    spell_haste = haste_score / 15.77
     sf_cast_time = 3 / (1 + (spell_haste/100))
     sf_cast_time_ng = 2.5 / (1 + (spell_haste/100))
     # print("SF Cast time : " + str(sf_cast_time))
@@ -108,7 +109,7 @@ def compute_avg_dps(num_fights, intellect, crit_score, hit_score, spellpower, ha
     n = 0
     while n < loop_size:
         n = n +1
-        logging.info(f'Simulating fight #{n}...')
+        logging.debug(f'Simulating fight #{n}...')
         # Initialization
         total_damage_done = 0
         damage = 0

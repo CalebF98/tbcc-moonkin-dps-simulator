@@ -14,8 +14,10 @@
 			<input type="submit" value="Run Sim">
 		</form>
 		{% if results %}
-			<h3>Results:</h3>
-			{{ results }}
+			<div id='results-wrapper'>
+				<h3>Results:</h3>
+				<p>{{ results }}</p>
+			</div>
 		{% endif %}
 	</body>
 </html>

@@ -9,11 +9,23 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(32)
 
-
 @app.route('/', methods=['GET','POST'])
 def index():
 	form = SimParamsForm()
 	if request.method == 'POST' and form.validate():
-		return render_template('form.html', form=form, results='Congratulations! You entered valid data.')
+		sim_params = {
+			'is_csd': False,
+			'is_spellstrike': True,
+			'is_spellfire': True
+		}
+
+		filtered = filter(lambda x: x.name != 'csrf_token', form)
+		for stat in filtered:
+			sim_params[stat.name] = stat.data
+
+
+		dps = compute_avg_dps(**sim_params)
+		app.logger.info(dps)
+		return render_template('form.html', form=form, results=dps)
 
 	return render_template('form.html', form=form)

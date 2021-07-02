@@ -1,3 +1,7 @@
+#results-wrapper{
+	margin: 2em auto 0 4em;
+}
+
 body {
 	display: flex;
 	flex-direction: column;
@@ -13,7 +17,6 @@ form {
 	grid-template-columns: 4em 10em;
 	gap: 0.5em;
 }
-
 
 input[type="submit"] {
 	grid-column: span 2;
