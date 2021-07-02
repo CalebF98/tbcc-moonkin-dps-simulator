@@ -16,7 +16,7 @@
 		{% if results %}
 			<div id='results-wrapper'>
 				<h3>Results:</h3>
-				<p>{{ results }}</p>
+				<p>Average DPS of {{ num_fights}} fights: {{ "{:.2f}".format(results) }}</p>
 			</div>
 		{% endif %}
 	</body>

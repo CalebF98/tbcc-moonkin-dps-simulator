@@ -25,7 +25,6 @@ def index():
 
 
 		dps = compute_avg_dps(**sim_params)
-		app.logger.info(dps)
-		return render_template('form.html', form=form, results=dps)
+		return render_template('form.html', form=form, results=dps, num_fights=sim_params['num_fights'])
 
 	return render_template('form.html', form=form)
