@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
-from simulation import compute_avg_dps
+from app.simulation import compute_avg_dps
 from flask import Flask, request, render_template
-from form import SimParamsForm
+from app.form import SimParamsForm
 
 load_dotenv()
 
